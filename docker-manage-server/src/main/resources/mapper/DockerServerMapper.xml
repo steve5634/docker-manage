@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.steve5634.dockerManageServer.mapper.DockerServerMapper">
+
+    <resultMap id="DockerServerResult" type="site.steve5634.dockerManageServer.domain.DockerServer">
+        <id property="id" column="id" />
+        <result property="type" column="type" />
+        <result property="name" column="name" />
+        <result property="version" column="version" />
+        <result property="host" column="host" />
+        <result property="tlsVerify" column="tls_verify" />
+        <result property="certPath" column="cert_path" />
+        <result property="registryUrl" column="registry_url" />
+        <result property="registryUsername" column="registry_username" />
+        <result property="registryPassword" column="registry_password" />
+        <result property="registryEmail" column="registry_email" />
+        <result property="delFlag" column="del_flag" />
+    </resultMap>
+
+    <select id="queryList" parameterType="site.steve5634.dockerManageServer.domain.DockerServer" resultMap="DockerServerResult">
+        select * from docker_server
+        <where>
+            and del_flag = 0
+        </where>
+    </select>
+
+</mapper>
